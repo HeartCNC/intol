@@ -1,17 +1,20 @@
 const event = require('./event')
 const ua = require('./ua')
 const file = require('./file')
-const mobile = require('./mobile')
+const share = require('./share')
+const lib = require('./lib')
 const axios = require('axios')
 // import axios from 'axios'
 
-mobile.init()
+// mobile.init()
 
 var _global = {
   event,
   ua,
   file,
-  http: axios
+  share,
+  http: axios,
+  lib
 }
 
 function _isType (type) {

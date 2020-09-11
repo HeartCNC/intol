@@ -10,17 +10,19 @@ var os = _hasKeyWordInUa('Android') || _hasKeyWordInUa('Adr') ? 'android' : (
     /\(i[^;]+;( U;)? CPU.+Mac OS X/.test(userAgent) ? 'ios' : null
   )
 var allBrowser = [
-    // QQ
+  // QQ
   'MQQBrowser',
-    // chrome
+  // chrome
   'Chrome',
-    // VivoBrowser
+  // Firefox
+  'Firefox',
+  // VivoBrowser
   'VivoBrowser',
-    // UC
+  // UC
   'UCBrowser',
-    // baidubrowser
+  // baidubrowser
   'baidubrowser',
-    // MIUI浏览器
+  // MIUI浏览器
   'MiuiBrowser',
   // Safari
   'Safari'
@@ -48,6 +50,10 @@ var network = window.navigator.connection.effectiveType.toLocaleLowerCase()
 var allPlatform = [
   // 微信
   'MicroMessenger',
+  // 微信小程序
+  // micromessenger-miniapp
+  // 支付宝
+  'AlipayClient',
   // 爱音乐客户端
   'iMusic',
   // 中国电信营业厅客户端
@@ -66,6 +72,9 @@ var platform = (function () {
     // eslint-disable-next-line no-useless-escape
     if (_hasKeyWordInUa('\\s' + allPlatform[i] + '\/[\\d.]+', 'i')) {
       result = allPlatform[i].toLocaleLowerCase()
+      if (_hasKeyWordInUa('miniProgram', 'i')) {
+        result += '-miniapp'
+      }
       break
     }
   }
